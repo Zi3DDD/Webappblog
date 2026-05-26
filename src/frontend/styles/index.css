@@ -46,3 +46,42 @@ img {
 .kaart-foto { width: 20%; }
 .kaart-inhoud { width: 70%; }
 .meta-tekst { color: #888; font-size: 14px; }
+
+/* categorie filters */
+.categorie-filters { margin-bottom: 25px; }
+.filter-knop {
+    background: #0d52a1;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.filter-knop.actief { background: #0056b3; } /* geselecteerde categorie */
+
+/* nieuwsbrief onderaan */
+.nieuwsbrief-sectie {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 30px;
+}
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+button {
+    background-color: #0d52a1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}

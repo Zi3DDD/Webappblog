@@ -1,4 +1,9 @@
+<?php
+require('classblog.php');
 
+// Hier wodt allen blogs opgehaald uit de database afhankelijk welke rol je hebt. 
+
+?>
 
 <html>
 
@@ -27,17 +32,22 @@
 <button type="button">Nieuwe blog aanmaken</button>
 </div>
  <div class="blogs">
-
+    <?php
+ $data1 = $_Blog->readBlog();
+foreach($data1 as $row){?>
 
 <table class="overzicht">
-
+<td><h3> <?php echo $row['titel'];  ?> </h3> </td>
+<td> <button><a href="update.php?id=<? echo $row['id']; ?>">Update</a></button></td>
+<td><button> <a href="delete.php?id=<? echo $row['id']; ?>">Verwijderen</a></button></td>
 </table>
 
 
 
+<?php
+}
 
-
-
+?>
 </div>
 </body>
 

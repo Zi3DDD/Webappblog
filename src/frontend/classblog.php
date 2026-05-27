@@ -25,7 +25,7 @@ class Blog {
     }
   }
  
-
+// Functies voor Zahied
   // Hier wordt de opgeslagen blog informatie  opgehaald uit de database. Tergelijkten tijd wordt er ook de jusite afbeelding opgehaaldt uit de database.
   function readBlog(){
         $stmt = $this->pdo->prepare("

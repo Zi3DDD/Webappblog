@@ -1,32 +1,15 @@
 <?php
-class Blog {
- 
-  private $pdo = null;
-  private $stmt = null;
-  public $error;
- 
-  // pdo connectie  wordt hier gemaakt .
-  function __construct () {
-      $this->pdo = new PDO(
-      "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET,
-      DB_USER, DB_PASSWORD, [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+require('classconnection.php');
+class Blog  {
+
+  public $pdo;
+
+  public function __construct() {
+      $this->pdo = new Connection();
   }
- 
-  //Connectie vernietigen zodat ombefoegde mensen er niet bij kunnen
-  function __destruct(){
-    if($this->stmt !== null){
-        $this->stmt = null;
-    }
-    if ($this->pdo !== null){
-        $this->pdo = null;
-    }
-  }
- 
+
   // Hier begint de crud operaties van de blog.
- 
+
   // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
   function createBlog($title,$text,$filename,$file_path,$category){
  
@@ -122,13 +105,7 @@ class Blog {
 }
  
 // hier worden de jusite  parameters aan de blog meegegeven zodat er een connectie gemaakt kan worden met de database.
-define("DB_HOST", "db");
-define("DB_NAME", "db_blog");
-define("DB_CHARSET", "utf8mb4");
-define("DB_USER", "root");
-define("DB_PASSWORD", "root");
- 
+
 $_Blog = new Blog();
- 
+
 ?>
- 

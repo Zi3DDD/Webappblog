@@ -1,7 +1,4 @@
 <?php
-require('classblog.php');
-
-
 class User {
 
      // pdo connectie  wordt hier gemaakt .
@@ -93,7 +90,7 @@ $_SESSION["permissies"] = $permissies;
     session_start();
 
     if (!isset($_SESSION["username"])) {
-        header("Location: login.php");
+        header("Location: n.php");
         exit;
     }
 }    

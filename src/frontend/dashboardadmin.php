@@ -1,5 +1,6 @@
 <?php
-require('classuser.php');
+require('classblog.php');
+
 $check = $_User->requireLogin();
 
 // Hier wodt allen blogs opgehaald uit de database afhankelijk welke rol je hebt. 

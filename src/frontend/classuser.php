@@ -1,31 +1,13 @@
 <?php
-class User {
+require_once('classconnection.php');
+class User extends Connection {
 
      // pdo connectie  wordt hier gemaakt .
 
-  private $pdo = null;
-  private $stmt = null;
-  public $error;
-
-  function __construct () {
-      $this->pdo = new PDO(
-      "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET,
-      DB_USER, DB_PASSWORD, [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
     
-  }
+  
 
   //Connectie vernietigen zodat ombefoegde mensen er niet bij kunnen
-function __destruct(){
-    if($this->stmt !== null){
-        $this->stmt = null;
-    }
-    if ($this->pdo !== null){
-        $this->pdo = null;
-    }
-}
 
   
 // hier wordt  input dat gefilterd zodat er geen ongwenste tekens in kunnen komen.
@@ -55,7 +37,7 @@ $stmt = $this->pdo->prepare('INSERT INTO gebruiker (user_email, user_password, r
 
 function login ($user_email, $user_password){
 
-$stmt = $this->pdo->prepare("SELECT gebruiker.user_id, gebruiker.user_email, gebruiker.user_password, rollen.role_name FROM gebruiker INNER JOIN rollen ON gebruiker.role_id = rollen.role_id WHERE user_email = ?");
+$stmt = $this->pdo->prepare("SELECT gebruiker.role_id, gebruiker.user_email, gebruiker.user_password, rollen.role_name FROM gebruiker INNER JOIN rollen ON gebruiker.role_id = rollen.role_id WHERE user_email = ?");
 $stmt->bindParam(1, $user_email);
  $stmt->execute();
 $data = $stmt->fetch();
@@ -70,6 +52,7 @@ $valid = is_array($data);
       $stmt->execute();
       $data1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
       $username = $data["user_email"];
+      $gebruikerrol= $data["role_id"];
       $permissies = array();
 
       foreach($data1 as $row){  
@@ -78,6 +61,10 @@ $valid = is_array($data);
       };
 $_SESSION["username"] = $username;
 $_SESSION["permissies"] = $permissies;
+$_SESSION["role_id"] = $gebruikerrol;
+
+
+echo "Ingelogd als: " . $_SESSION["username"] . " met rol: " . $_SESSION["role_id"] ;
 
   } 
 }
@@ -85,12 +72,12 @@ $_SESSION["permissies"] = $permissies;
      }
 
 
- function requireLogin() {
+ function requireLogin($rol) {
 
     session_start();
 
-    if (!isset($_SESSION["username"])) {
-        header("Location: n.php");
+    if (!isset($_SESSION["$rol"])) {
+        header("Location: loginform.php");
         exit;
     }
 }    
@@ -105,11 +92,6 @@ $_SESSION["permissies"] = $permissies;
 
 
 
-define("DB_HOST", "db");
-define("DB_NAME", "db_blog");
-define("DB_CHARSET", "utf8mb4");
-define("DB_USER", "root");
-define("DB_PASSWORD", "root");
 $_User = new User();
 
 

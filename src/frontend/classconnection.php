@@ -1,8 +1,8 @@
 <?php
 class Connection   {
 
-  private $pdo = null;
-  private $stmt = null;
+  protected $pdo = null;
+  protected $stmt = null;
   public $error;
  
   // pdo connectie  wordt hier gemaakt .
@@ -24,6 +24,14 @@ class Connection   {
         $this->pdo = null;
     }
   }
+
+// hier wordt  input dat gefilterd zodat er geen ongwenste tekens in kunnen komen.
+
+  function filter_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;}
 }
 
 define("DB_HOST", "db");

@@ -1,7 +1,9 @@
 <?php
 require('classblog.php');
+require('classuser.php');
+//require('classuser.php');
 
-$check = $_User->requireLogin();
+$_User->requireLogin(2);
 
 // Hier wodt allen blogs opgehaald uit de database afhankelijk welke rol je hebt. 
 
@@ -31,7 +33,7 @@ $check = $_User->requireLogin();
 
 
 <div class="buttons">
-<button type="button">Nieuwe blog aanmaken</button>
+<button  href="createblog.php">Nieuwe blog aanmaken</button>
 </div>
  <div class="blogs">
     <?php

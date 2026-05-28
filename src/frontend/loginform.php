@@ -22,8 +22,7 @@ $_User->register($user_email,$user_password,$role_id ,$user_nickname) ? "OK" : $
 
     $user_email =  $_POST["email"];
     $user_password =  $_POST["password"];
-    $user_nickname = $_POST["user_nickname"];
-    $role_id = $_POST["role_id"];
+   
    
 
 $_User->login($user_email,$user_password) ? "OK" : $_User->error;

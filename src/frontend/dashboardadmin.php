@@ -3,7 +3,7 @@ require('classblog.php');
 require('classuser.php');
 //require('classuser.php');
 
-$_User->requireLogin(2);
+//$_User->requireLogin(2);
 
 // Hier wodt allen blogs opgehaald uit de database afhankelijk welke rol je hebt. 
 

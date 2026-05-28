@@ -1,37 +1,4 @@
 <?php
-<<<<<<< HEAD
-class Blog {
- 
-  private $pdo = null;
-  private $stmt = null;
-  public $error;
- 
-  // pdo connectie  wordt hier gemaakt .
-  function __construct () {
-      $this->pdo = new PDO(
-      "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET,
-      DB_USER, DB_PASSWORD, [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-  }
- 
-  //Connectie vernietigen zodat ombefoegde mensen er niet bij kunnen
-  function __destruct(){
-    if($this->stmt !== null){
-        $this->stmt = null;
-    }
-    if ($this->pdo !== null){
-        $this->pdo = null;
-    }
-  }
- 
-  // Hier begint de crud operaties van de blog van Sammi.
- 
-  // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
-  function createBlog($title,$text,$filename,$file_path,$category){
- 
-=======
 require_once('classconnection.php');
 class Blog extends Connection    {
 
@@ -41,21 +8,12 @@ class Blog extends Connection    {
   // Hier begint de crud operaties van de blog.
 
 
-    function readBlog(){
-        $stmt = $this->pdo->prepare("
-        SELECT blog.id, blog.titel, blog.text, image.filename, blog.created_at, blog.categorie, image.url
-        FROM blog
-        INNER JOIN image ON blog.header_image_id = image.image_id
-        ORDER BY blog.created_at DESC
-        ");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-  }
+
 
   // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
   function createBlog($title,$text,$filename,$file_path,$category){
         
->>>>>>> origin/Sammi
+
         $this->pdo->beginTransaction();
         $stmt = $this->pdo->prepare('INSERT INTO image(filename, url ) VALUES( ? ,?)');
         $stmt->bindParam(1, $filename);
@@ -143,7 +101,6 @@ class Blog extends Connection    {
  
       $this->pdo->commit();
   }
-<<<<<<< HEAD
 
   // Functies voor Zahied
   // Hier wordt de opgeslagen blog informatie  opgehaald uit de database. Tergelijkten tijd wordt er ook de jusite afbeelding opgehaaldt uit de database.
@@ -192,23 +149,14 @@ class Blog extends Connection    {
 }
  
 // hier worden de jusite  parameters aan de blog meegegeven zodat er een connectie gemaakt kan worden met de database.
-define("DB_HOST", "db");
-define("DB_NAME", "db_blog");
-define("DB_CHARSET", "utf8mb4");
-define("DB_USER", "root");
-define("DB_PASSWORD", "root");
- 
-$_Blog = new Blog();
- 
-?>
-=======
- 
-
-}
- 
-// hier worden de jusite  parameters aan de blog meegegeven zodat er een connectie gemaakt kan worden met de database.
 
 $_Blog = new Blog();
 
+
+ 
 ?>
->>>>>>> origin/Sammi
+ 
+
+
+ 
+

@@ -26,9 +26,10 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
     <title>Vakantie Blogs</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
+<div class="pagina-container">
 <body>
 
-    <header class="blog-header">
+    <header class="site-header">
         <h1><a href="index.php" style="text-decoration: none; color: inherit;">Vakantie Blogs</a></h1>
         <p>De laatste artikelen en tips</p>
     </header>
@@ -88,4 +89,5 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
     </main>
 
 </body>
+        </div>
 </html>

@@ -18,6 +18,7 @@ img {
     max-width: 100%;
     border-radius: 5px;
     margin-bottom: 15px;
+    object-fit: cover;
 }
 
 /* layout landingspagina */
@@ -43,12 +44,16 @@ img {
     padding-bottom: 20px;
     border-bottom: 1px solid #eee;
 }
-.kaart-foto { width: 20%; }
-.kaart-inhoud { width: 70%; }
+.kaart-foto { width: 40%; }
+.kaart-inhoud { width: 60%; }
 .meta-tekst { color: #888; font-size: 14px; }
 
 /* categorie filters */
-.categorie-filters { margin-bottom: 25px; }
+.categorie-filters {
+    margin-bottom: 25px; 
+    text-align: center;
+}
+
 .filter-knop {
     background: #0d52a1;
     color: white;

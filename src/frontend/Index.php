@@ -58,9 +58,8 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
                     <img src="uploads/<?php echo $blog['filename']; ?>">
                     </div>
                     
-                    // htmlspecialchars geen code in velden kunnen invoeren
-                    <div class="kaart-inhoud">
-                        <h2><?= htmlspecialchars($blog['titel']) ?></h2>
+                   <div class="kaart-inhoud">
+                    <h2><?= /* htmlspecialchars geen code in velden kunnen invoeren */ htmlspecialchars($blog['titel']) ?></h2>
                         <p class="meta-tekst">
                             <?= date('d-m-Y', strtotime($blog['created_at'])) ?> | <?= htmlspecialchars($blog['categorie']) ?>
                         </p>

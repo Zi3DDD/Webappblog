@@ -1,0 +1,93 @@
+:root {
+  --green: #0C9185;
+  --grey: #D9D9D9;
+  --white:#FDFDFD;
+}
+
+
+
+
+.form{
+   margin-top:5%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   padding-left: 5%;
+   padding-right: 5%;
+   border-radius: 25px;
+   background-color: #FDFDFD;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+
+}
+.form h1 {
+  color: var(--green);
+}
+input.input {
+    padding: 11% 26%;
+    border-radius: 20px;
+    border-style: none;
+    background: #F0F0F0;
+    color: #D9D9D9;
+    font-size: 12px;
+}
+
+input[type="submit"] {
+    padding: 5% 36%;
+    border-radius: 20px;
+    border-style: none;
+    background:var(--green);
+    color: var(--white);
+}
+
+body {
+  background-image: url("../images/beach.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+nav img {
+  margin-left: 3%;
+    height: auto;
+    width: 3%;
+}
+
+nav ul{
+    display: flex;
+    width: 16%;
+    justify-content: space-between;
+    margin-left: 74%;
+
+}
+
+select.categorie {
+    width: 100%;
+    padding: 6%;
+    border-radius: 20px;
+    background-color: var(--grey);
+}

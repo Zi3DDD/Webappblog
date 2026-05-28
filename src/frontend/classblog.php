@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 class Blog {
  
   private $pdo = null;
@@ -30,6 +31,31 @@ class Blog {
   // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
   function createBlog($title,$text,$filename,$file_path,$category){
  
+=======
+require_once('classconnection.php');
+class Blog extends Connection    {
+
+
+
+
+  // Hier begint de crud operaties van de blog.
+
+
+    function readBlog(){
+        $stmt = $this->pdo->prepare("
+        SELECT blog.id, blog.titel, blog.text, image.filename, blog.created_at, blog.categorie, image.url
+        FROM blog
+        INNER JOIN image ON blog.header_image_id = image.image_id
+        ORDER BY blog.created_at DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
+  function createBlog($title,$text,$filename,$file_path,$category){
+        
+>>>>>>> origin/Sammi
         $this->pdo->beginTransaction();
         $stmt = $this->pdo->prepare('INSERT INTO image(filename, url ) VALUES( ? ,?)');
         $stmt->bindParam(1, $filename);
@@ -117,6 +143,7 @@ class Blog {
  
       $this->pdo->commit();
   }
+<<<<<<< HEAD
 
   // Functies voor Zahied
   // Hier wordt de opgeslagen blog informatie  opgehaald uit de database. Tergelijkten tijd wordt er ook de jusite afbeelding opgehaaldt uit de database.
@@ -174,3 +201,14 @@ define("DB_PASSWORD", "root");
 $_Blog = new Blog();
  
 ?>
+=======
+ 
+
+}
+ 
+// hier worden de jusite  parameters aan de blog meegegeven zodat er een connectie gemaakt kan worden met de database.
+
+$_Blog = new Blog();
+
+?>
+>>>>>>> origin/Sammi

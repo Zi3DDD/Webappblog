@@ -1,0 +1,64 @@
+:root {
+  --green: #0C9185;
+  --grey: #D9D9D9;
+  --white:#FDFDFD;
+}
+
+
+
+body {
+  background-color: #f2ecf3;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+nav img {
+  margin-left: 3%;
+    height: auto;
+    width: 3%;
+}
+
+nav ul{
+    display: flex;
+    width: 16%;
+    justify-content: space-between;
+    margin-left: 74%;
+
+}
+
+.overzicht {
+    margin-top: 14%;
+    width: 72%;
+    height: 85%;
+    background: white;
+}
+
+
+
+
+
+

@@ -1,5 +1,7 @@
 <?php
 include 'classblog.php';
+include('header.php');
+//$_User->requireLogin(2);
 // hier wordt oude informatie opgehaald van een blog en kan je die oude info bewerken en de gegevens updaten .
 
 if (isset($_GET['id'])) {

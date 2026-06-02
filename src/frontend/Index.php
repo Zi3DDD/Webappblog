@@ -1,5 +1,7 @@
 <?php 
 require_once 'classblog.php'; 
+require('classuser.php');
+//$_User->requireLogin(1);
 
 // functie blog aanroepen
 $blogs = $_Blog->readBlog();

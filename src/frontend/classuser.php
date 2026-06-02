@@ -9,7 +9,7 @@ class User extends Connection {
 
   //Connectie vernietigen zodat ombefoegde mensen er niet bij kunnen
 
-  
+// Functies van Sammi
 // hier wordt  input dat gefilterd zodat er geen ongwenste tekens in kunnen komen.
 
   function filter_input($data) {
@@ -30,7 +30,7 @@ $stmt = $this->pdo->prepare('INSERT INTO gebruiker (user_email, user_password, r
         $stmt->execute();
 }
 
-
+// Functies van Sammi
 // Hier word er gekeken of de gebruiker kan inloggen op basis dat de persoon de juiste informatie invoerd. 
 
 
@@ -64,25 +64,26 @@ $_SESSION["permissies"] = $permissies;
 $_SESSION["role_id"] = $gebruikerrol;
 
 
-echo "Ingelogd als: " . $_SESSION["username"] . " met rol: " . $_SESSION["role_id"] ;
 
   } 
 }
 
      }
 
-
+ // Functies van Sammi
  function requireLogin($rol) {
 
     session_start();
 
-    if (!isset($_SESSION["$rol"])) {
+    if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] !== $rol) {
         header("Location: loginform.php");
         exit;
+
+        
     }
 }    
 
-
+//if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] !== $rol)
 
 }
  

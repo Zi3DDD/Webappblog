@@ -1,5 +1,8 @@
 <?php
 require('classblog.php');
+require('classuser.php');
+include('header.php');
+//$_User->requireLogin(2);
 
 // afhankelijk welke rol je hebt kun je een blog aanmaken.
 // hier form informatie gevalideerd. en wordt de data naar de juiste plekken toegestuurd fotos gaan naar de upload map en allen andere waarden gaat de database in . 

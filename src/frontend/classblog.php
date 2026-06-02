@@ -9,6 +9,7 @@ class Blog extends Connection    {
 
 
 
+    // Functies van Sammi
 
   // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
   function createBlog($title,$text,$filename,$file_path,$category){
@@ -33,7 +34,7 @@ class Blog extends Connection    {
   }
  
  
- 
+     // Functies van Sammi
   // hier worden de bij elkaar hoorende blog en afbeelding geupdate.  Er wordt ook gegekeken of de afbeelding al bestaat zo ja dan krijgt de afbeelding de juiste waarde toegevoegd.
   function updateBlog($id,$title,$text,$filename,$file_path,$category){
  
@@ -73,7 +74,7 @@ class Blog extends Connection    {
          $this->pdo->commit();
        }
   }
- 
+     // Functies van Sammi
   // hier wordt je juiste blog en afbeelding informatie opgehaald om te laten zien wat er al was zodat je dat kan updaten.
   function readUpdate($id){
       $stmt = $this->pdo->prepare("SELECT * FROM blog WHERE id = ?");
@@ -81,7 +82,7 @@ class Blog extends Connection    {
       $stmt->execute();
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
- 
+     // Functies van Sammi
   // hier wordt de juiste blog en afbeelding informatie verwijderd uit de database.
   function deleteBlog($id){
       $this->pdo->beginTransaction();
@@ -102,7 +103,7 @@ class Blog extends Connection    {
       $this->pdo->commit();
   }
 
-  // Functies voor Zahied
+  // Functies van Zahied
   // Hier wordt de opgeslagen blog informatie  opgehaald uit de database. Tergelijkten tijd wordt er ook de jusite afbeelding opgehaaldt uit de database.
   function readBlog(){
         $stmt = $this->pdo->prepare("
@@ -114,7 +115,7 @@ class Blog extends Connection    {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
-
+    // Functies van Zahied
   // Zoekt in de database op basis van zoek worden op basis van titel zie Where blog.titel.
   function zoek($zoekwoord){
       $stmt = $this->pdo->prepare("
@@ -126,7 +127,7 @@ class Blog extends Connection    {
       $stmt->execute(["%$zoekwoord%"]);
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
-
+  // Functies van Zahied
   // filterr op categorie  in de database zie Where blog.categorie.
   function filtercategorie($categorie){
       $stmt = $this->pdo->prepare("
@@ -139,7 +140,7 @@ class Blog extends Connection    {
       $stmt->execute();
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
-
+    // Functies van Zahied
   // slaat gegevens van geintresseerde op voor nieuwsbrief.
   function nieuwsbrief($email){
       $stmt = $this->pdo->prepare('INSERT INTO subscriber (email) VALUES (?)');
@@ -154,7 +155,7 @@ $_Blog = new Blog();
 
 
  
-?>
+
  
 
 

@@ -1,6 +1,7 @@
 <?php
 require_once 'classblog.php';
-
+require('classuser.php');
+$_User->requireLogin(1);
 $blog_id = $_GET['id'] ?? 0; 
 $blog = null;
 

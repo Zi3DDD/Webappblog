@@ -1,0 +1,62 @@
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+nav img {
+  margin-left: 3%;
+    height: auto;
+    width: 3%;
+    padding: 10px;
+}
+
+nav ul{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    margin-left: 74%;
+
+}
+
+
+
+nav ul li{
+    display: flex;
+    width: 16%;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 
+
+}
+
+nav ul li button{
+     border-style: none;
+    background-color: #0C9185;
+    color: white;
+    border-radius: 20px;
+    border-style: none;
+    padding-left: 50%;
+    padding-right: 50%;
+}
+
+nav ul li a{
+    color: black;
+    text-decoration: none;
+
+}
+
+
+nav ul li a:hover{
+    color: #0C9185;
+    text-decoration: none;
+
+}

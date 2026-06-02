@@ -1,13 +1,13 @@
 <?php
 
 session_start();
-
+include('header.php');
 require('classuser.php');
   if(isset($_POST["register"])) {
 
-    $user_email =  $_POST["email"];
-    $user_password =  $_POST["password"];
-    $user_nickname = $_POST["user_nickname"];
+    $user_email = $_User->filter_email($_POST["email"]);
+    $user_password =  $_User->filter_text($_POST["password"]);
+    $user_nickname = $_User->filter_text($_POST["user_nickname"]);
     $role_id = $_POST["role_id"];
    
 //echo $user_email. $user_password .$role_id .$user_nickname;
@@ -20,7 +20,7 @@ $_User->register($user_email,$user_password,$role_id ,$user_nickname) ? "OK" : $
 
   if(isset($_POST["login"])) {
 
-    $user_email =  $_POST["email"];
+    $user_email = $_User->filter_email($_POST["email"]);
     $user_password =  $_POST["password"];
    
    
@@ -41,18 +41,7 @@ $_User->login($user_email,$user_password) ? "OK" : $_User->error;
 
 
 <body>
-<nav>
-    <img src="images/logo.png" alt="logo vacantie blog">
 
-   
-        <ul>
-        <li><a href="default.asp">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="about.asp">About</a></li>
-        </ul>
-
-</nav>
 
 <form  class="form"  method="post">
     <h1> Register </h1>

@@ -1,8 +1,9 @@
 <?php
+session_start();
 require('classblog.php');
-require('classuser.php');
+require_once('classuser.php');
+$_User->requireLogin(2,2);
 include('header.php');
-//$_User->requireLogin(2);
 
 // afhankelijk welke rol je hebt kun je een blog aanmaken.
 // hier form informatie gevalideerd. en wordt de data naar de juiste plekken toegestuurd fotos gaan naar de upload map en allen andere waarden gaat de database in . 
@@ -15,7 +16,6 @@ include('header.php');
     $title =  $_POST["title"];
     $text =  $_POST["text"];
     $category = $_POST["categorie"];
- echo $title. $text .$category;
  move_uploaded_file($_FILES['foto']['tmp_name'], __DIR__ . $file_path);
 
 $_Blog->createBlog($title,$text,$filename,$file_path,$category) ? "OK" : $_Blog->error; }
@@ -32,16 +32,7 @@ $_Blog->createBlog($title,$text,$filename,$file_path,$category) ? "OK" : $_Blog-
     
 <body>
 
-<nav>
-    <img src="images/logo.png" alt="logo vacantie blog">
 
-   
-        <ul>
-        <li><a href="contact.asp">Username</a></li>
-        <li><button type="submit">Loguit</button></li>
-        </ul>
-
-</nav>
 
 
  <form  enctype="multipart/form-data" method="post">

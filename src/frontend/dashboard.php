@@ -1,8 +1,10 @@
 <?php
+session_start();
 require('classblog.php');
-require('classuser.php');
+require_once('classuser.php');
+$_User->requireLogin(2,2);
 include('header.php');
-//$_User->requireLogin(2);
+
 
 // Hier wodt allen blogs opgehaald uit de database afhankelijk welke rol je hebt. 
 
@@ -17,16 +19,6 @@ include('header.php');
     
 <body>
 
-<nav>
-    <img src="images/logo.png" alt="logo vacantie blog">
-
-   
-        <ul>
-        <li><a href="contact.asp">Username</a></li>
-        <li><button type="submit">Loguit</button></li>
-        </ul>
-
-</nav>
 
 
 

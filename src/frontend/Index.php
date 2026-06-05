@@ -1,8 +1,9 @@
 <?php 
+session_start();
 require_once 'classblog.php'; 
 require('classuser.php');
-//$_User->requireLogin(1);
-
+$_User->requireLogin(1,2);
+include('header.php');
 // functie blog aanroepen
 $blogs = $_Blog->readBlog();
 
@@ -60,7 +61,7 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
                     <img src="uploads/<?php echo $blog['filename']; ?>">
                     </div>
                     
-                    // htmlspecialchars geen code in velden kunnen invoeren
+                  
                     <div class="kaart-inhoud">
                         <h2><?= htmlspecialchars($blog['titel']) ?></h2>
                         <p class="meta-tekst">

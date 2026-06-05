@@ -1,10 +1,12 @@
 <?php
-require_once 'classblog.php';
-require('classuser.php');
-$_User->requireLogin(1);
+session_start();
+require('classblog.php');
+require_once('classuser.php');
+$_User->requireLogin(2,2);
+include('header.php');
+
 $blog_id = $_GET['id'] ?? 0; 
 $blog = null;
-
 // Zoek de juiste blog in de lijst
 foreach ($_Blog->readBlog(100, 0) as $b) {
     if ($b['id'] == $blog_id) $blog = $b;
@@ -75,3 +77,5 @@ if (!$blog) { header("Location: index.php"); exit; }
 
 </body>
 </html>
+
+

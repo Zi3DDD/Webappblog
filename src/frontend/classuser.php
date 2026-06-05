@@ -44,8 +44,10 @@ $data = $stmt->fetch();
 $valid = is_array($data);
   if($valid){
 
-    echo $user_email. $user_password;
+
      if(password_verify($user_password, $data["user_password"])){
+    session_start();
+    session_regenerate_id(true);
       $rol = $data["role_name"];
       $stmt = $this->pdo->prepare("SELECT * from permissies WHERE perm_mod = ?");
       $stmt->bindParam(1, $rol);
@@ -59,6 +61,7 @@ $valid = is_array($data);
         $permissies[] = $row["perm_desc"];
 
       };
+
 $_SESSION["username"] = $username;
 $_SESSION["permissies"] = $permissies;
 $_SESSION["role_id"] = $gebruikerrol;
@@ -71,15 +74,19 @@ $_SESSION["role_id"] = $gebruikerrol;
      }
 
  // Functies van Sammi
- function requireLogin($rol) {
+ function requireLogin($rol1,$rol2) {
 
-    session_start();
-
-    if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] !== $rol) {
+    if (
+        isset($_SESSION['role_id']) &&
+        (
+            $_SESSION['role_id'] == $rol1 ||
+            $_SESSION['role_id'] == $rol2
+        )
+    ) {
+        return; // toegang toegestaan
+    } else {
         header("Location: loginform.php");
         exit;
-
-        
     }
 }    
 

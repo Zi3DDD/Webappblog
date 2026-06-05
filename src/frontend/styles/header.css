@@ -60,3 +60,9 @@ nav ul li a:hover{
     text-decoration: none;
 
 }
+
+
+nav ul .username{
+    color: #0C9185;
+    font-weight: bold;
+}

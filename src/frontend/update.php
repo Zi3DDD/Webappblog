@@ -1,7 +1,9 @@
 <?php
-include 'classblog.php';
+session_start();
+require('classblog.php');
+require_once('classuser.php');
+$_User->requireLogin(2,2);
 include('header.php');
-//$_User->requireLogin(2);
 // hier wordt oude informatie opgehaald van een blog en kan je die oude info bewerken en de gegevens updaten .
 
 if (isset($_GET['id'])) {
@@ -59,18 +61,6 @@ foreach($data1 as $row){
 </head>
     
 <body>
-
-<nav>
-    <img src="images/logo.png" alt="logo vacantie blog">
-
-   
-        <ul>
-        <li><a href="contact.asp">Username</a></li>
-        <li><button type="submit">Loguit</button></li>
-        </ul>
-
-</nav>
-
 
  <form  enctype="multipart/form-data" method="post">
      <br>

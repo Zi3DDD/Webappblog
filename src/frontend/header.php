@@ -1,22 +1,25 @@
-<html>
+<?php
+require_once('classuser.php');
+
+?>
+
+
 <head>
 <link rel="stylesheet" href="styles/header.css">
 </head>
-    
-<body>
-
 <nav>
-    <img src="images/logo.png" alt="logo vacantie blog">
+    <img src="images/logo.png" alt="logo vakantie blog">
 
-   
-        <ul> 
-            <li><a href="contact.asp">Home pagina</a></li>
-            <li><a href="contact.asp">Mijn blogs </a></li>
-        <li><?php echo $_SESSION['username']; ?></li>
-        <li><button type="submit"><a>Loguit</a></button></li>
-        </ul>
+    <ul>
+        <li><a href="Index.php">Home pagina</a></li>
+        <li><a href="dashboard.php">Mijn blogs</a></li>
 
+        <li class="username">
+             <?= htmlspecialchars($_SESSION["username"] ?? '') ?>
+        </li>
+
+        <li>
+            <a href="logout.php">Logout</a>
+        </li>
+    </ul>
 </nav>
-
-
-</html>

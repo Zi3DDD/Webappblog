@@ -5,8 +5,8 @@ require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
 require 'PHPMailer-master/src/Exception.php';
 // deze functie stuurt mail via Gmail
-function mailen ($ontvangerStraat, $ontvangerNaam, $onderwerp, $bericht)
-   
+function mailen ($ontvangerStraat, $ontvangerNaam, $onderwerp, $bericht){
+       
 $mail = new PHPMailer();
 // gmail instellen voor Gmail SMTP server
     $mail->isSMTP();
@@ -32,5 +32,5 @@ $mail = new PHPMailer();
     } else {
         echo 'Email kon niet worden verzonden. Fout: ' . $mail->ErrorInfo;
     }
-
+}
     ?>

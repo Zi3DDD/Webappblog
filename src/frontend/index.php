@@ -29,9 +29,10 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
     <title>Vakantie Blogs</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
+<div class="pagina-container">
 <body>
 
-    <header class="blog-header">
+    <header class="site-header">
         <h1><a href="index.php" style="text-decoration: none; color: inherit;">Vakantie Blogs</a></h1>
         <p>De laatste artikelen en tips</p>
     </header>
@@ -61,9 +62,8 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
                     <img src="uploads/<?php echo $blog['filename']; ?>">
                     </div>
                     
-                  
-                    <div class="kaart-inhoud">
-                        <h2><?= htmlspecialchars($blog['titel']) ?></h2>
+                   <div class="kaart-inhoud">
+                    <h2><?= /* htmlspecialchars geen code in velden kunnen invoeren */ htmlspecialchars($blog['titel']) ?></h2>
                         <p class="meta-tekst">
                             <?= date('d-m-Y', strtotime($blog['created_at'])) ?> | <?= htmlspecialchars($blog['categorie']) ?>
                         </p>
@@ -92,4 +92,5 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
     </main>
 
 </body>
+        </div>
 </html>

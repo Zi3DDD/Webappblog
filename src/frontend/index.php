@@ -33,12 +33,12 @@ if(isset($_POST['naam']) && isset($_POST['email'])) {
 <body>
 
     <header class="site-header">
-        <h1><a href="index.php" style="text-decoration: none; color: inherit;">Vakantie Blogs</a></h1>
-        <p>De laatste artikelen en tips</p>
+        
     </header>
 
     <div class="categorie-filters">
-
+        <h1>Vakantie Blogs</h1>
+        <p>De laatste artikelen en tips</p>
         <form method="get" action="index.php" style="display: inline-block;">
             <input class="filter-input" placeholder="Zoeken..." type="search" id="site-search" name="q" />
             <button type="submit" class="filter-knop">Zoeken</button>

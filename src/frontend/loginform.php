@@ -2,6 +2,7 @@
 
 
 require('classuser.php');
+
 $emailErr = "";
 $passwordErr = "";
 $role_idErr = "";

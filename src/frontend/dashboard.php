@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require('classblog.php');
 require_once('classuser.php');
 $_User->requireLogin(2,2);

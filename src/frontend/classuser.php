@@ -2,12 +2,6 @@
 require_once('classconnection.php');
 class User extends Connection {
 
-     // pdo connectie  wordt hier gemaakt .
-
-    
-  
-
-  //Connectie vernietigen zodat ombefoegde mensen er niet bij kunnen
 
 // Functies van Sammi
 // hier wordt  input dat gefilterd zodat er geen ongwenste tekens in kunnen komen.
@@ -66,6 +60,10 @@ $_SESSION["username"] = $username;
 $_SESSION["permissies"] = $permissies;
 $_SESSION["role_id"] = $gebruikerrol;
 
+include('header.php');
+
+
+
 
 
   } 
@@ -90,7 +88,12 @@ $_SESSION["role_id"] = $gebruikerrol;
     }
 }    
 
-//if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] !== $rol)
+function logout() {
+    session_start();
+    session_destroy();
+    header("Location: loginform.php");
+    exit;
+}
 
 }
  

@@ -12,7 +12,7 @@ require_once('classuser.php');
 
     <ul>
         <li><a href="index.php">Home pagina</a></li>
-        <li><a href="dashboard.php">Mijn blogs</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
 
         <li class="username">
              <?= htmlspecialchars($_SESSION["username"] ?? '') ?>

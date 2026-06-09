@@ -2,7 +2,7 @@
 session_start();
 require_once 'classblog.php'; 
 require('classuser.php');
-//$_User->requireLogin(1,2);
+$_User->requireLogin(1,2);
 include('header.php');
 // functie blog aanroepen
 $blogs = $_Blog->readBlog();

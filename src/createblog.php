@@ -13,9 +13,9 @@ include('header.php');
     
     $filename = $_FILES['foto']['name'];
     $file_path = '/uploads/' . $filename;
-    $title =  $_POST["title"];
-    $text =  $_POST["text"];
-    $category = $_POST["categorie"];
+    $title =  $_User->filter_text($_POST["title"]);
+    $text = $_User->filter_text($_POST["text"]);
+    $category = $_User->filter_text($_POST["categorie"]);
  move_uploaded_file($_FILES['foto']['tmp_name'], __DIR__ . $file_path);
 
 $_Blog->createBlog($title,$text,$filename,$file_path,$category) ? "OK" : $_Blog->error; }

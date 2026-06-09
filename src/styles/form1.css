@@ -24,12 +24,12 @@
 .form h1 {
   color: var(--green);
 }
-input.input {
+.input {
     padding: 11% 26%;
     border-radius: 20px;
     border-style: none;
-    background: #F0F0F0;
-    color: #D9D9D9;
+    background-color: #F0F0F0;
+    color: #000000;
     font-size: 12px;
 }
 
@@ -57,33 +57,6 @@ body {
 
 }
 
-nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-}
-
-nav img {
-  margin-left: 3%;
-    height: auto;
-    width: 3%;
-}
-
-nav ul{
-    display: flex;
-    width: 16%;
-    justify-content: space-between;
-    margin-left: 74%;
-
-}
 
 select.categorie {
     width: 100%;

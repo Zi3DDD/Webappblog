@@ -12,7 +12,7 @@ class Blog extends Connection    {
     // Functies van Sammi
 
   // Bij create blog kan je  een blog toeveogen bij de aan de database. Tergelijkertijd wordt er ook een afbeelding toeggevoegd aan de database.
-  function createBlog($title,$text,$filename,$file_path,$category){
+ public function createBlog($title,$text,$filename,$file_path,$category){
         
 
         $this->pdo->beginTransaction();
@@ -36,7 +36,7 @@ class Blog extends Connection    {
  
      // Functies van Sammi
   // hier worden de bij elkaar hoorende blog en afbeelding geupdate.  Er wordt ook gegekeken of de afbeelding al bestaat zo ja dan krijgt de afbeelding de juiste waarde toegevoegd.
-  function updateBlog($id,$title,$text,$filename,$file_path,$category){
+ public function updateBlog($id,$title,$text,$filename,$file_path,$category){
  
        $stmt = $this->pdo->prepare("SELECT * FROM image WHERE filename = ?");
        $stmt->bindParam(1, $filename);
@@ -54,6 +54,7 @@ class Blog extends Connection    {
          $stmt2->bindParam(5, $id);
          $stmt2->execute();
          $this->pdo->commit();
+         
  
        } else {
  
@@ -73,10 +74,11 @@ class Blog extends Connection    {
          $stmt2->execute();
          $this->pdo->commit();
        }
+      
   }
      // Functies van Sammi
   // hier wordt je juiste blog en afbeelding informatie opgehaald om te laten zien wat er al was zodat je dat kan updaten.
-  function readUpdate($id){
+   public function readUpdate($id){
       $stmt = $this->pdo->prepare("SELECT * FROM blog WHERE id = ?");
       $stmt->bindParam(1, $id);
       $stmt->execute();
@@ -84,7 +86,7 @@ class Blog extends Connection    {
   }
      // Functies van Sammi
   // hier wordt de juiste blog en afbeelding informatie verwijderd uit de database.
-  function deleteBlog($id){
+  public function deleteBlog($id){
       $this->pdo->beginTransaction();
  
       $stmt = $this->pdo->prepare("SELECT header_image_id FROM blog WHERE id = ?");
@@ -105,7 +107,7 @@ class Blog extends Connection    {
 
   // Functies van Zahied
   // Hier wordt de opgeslagen blog informatie  opgehaald uit de database. Tergelijkten tijd wordt er ook de jusite afbeelding opgehaaldt uit de database.
-  function readBlog(){
+ public function readBlog(){
         $stmt = $this->pdo->prepare("
         SELECT blog.id, blog.titel, blog.text, image.filename, blog.created_at, blog.categorie, image.url
         FROM blog
@@ -117,7 +119,7 @@ class Blog extends Connection    {
   }
     // Functies van Zahied
   // Zoekt in de database op basis van zoek worden op basis van titel zie Where blog.titel.
-  function zoek($zoekwoord){
+public  function zoek($zoekwoord){
       $stmt = $this->pdo->prepare("
       SELECT blog.*, image.filename
       FROM blog
@@ -129,7 +131,7 @@ class Blog extends Connection    {
   }
   // Functies van Zahied
   // filterr op categorie  in de database zie Where blog.categorie.
-  function filtercategorie($categorie){
+public  function filtercategorie($categorie){
       $stmt = $this->pdo->prepare("
       SELECT blog.*, image.filename
       FROM blog
@@ -142,7 +144,7 @@ class Blog extends Connection    {
   }
     // Functies van Zahied
   // slaat gegevens van geintresseerde op voor nieuwsbrief.
-  function nieuwsbrief($email){
+public function nieuwsbrief($email){
       $stmt = $this->pdo->prepare('INSERT INTO subscriber (email) VALUES (?)');
       $stmt->bindParam(1, $email);
       $stmt->execute();

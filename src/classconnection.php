@@ -36,7 +36,7 @@ class Connection   {
     if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
         ob_start();
         header("Location: loginform.php");
-        echo "<script>alert('Hallo wereld');</script>";
+
         exit;
         ob_end_flush();
     }

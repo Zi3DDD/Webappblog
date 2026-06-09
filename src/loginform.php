@@ -10,7 +10,7 @@ $nicknameErr = "";
 $emailLoginErr = "";
 $passwordLoginErr = "";
 $registerMessage = "";
-
+$loginMessage = "";
 
 
 
@@ -43,14 +43,13 @@ $registerMessage = "";
    
 //echo $user_email. $user_password .$role_id .$user_nickname;
 
-$_User->register($user_email,$user_password,$role_id ,$user_nickname) ? "OK" : $_User->error;
+ $result = $_User->register($user_email,$user_password,$role_id ,$user_nickname);
 
-if($_User->register($user_email,$user_password,$role_id,$user_nickname)) {
-    $registerMessage = "Registratie gelukt!";
+if ($result == "Email bestaat al") {
+    $registerMessage = "Email bestaat al";
 } else {
-    $registerMessage = $_User->error;
+    $registerMessage = "Registratie gelukt";
 }
-
 
 }
 
@@ -58,13 +57,13 @@ if($_User->register($user_email,$user_password,$role_id,$user_nickname)) {
   if(isset($_POST["login"])) {
 
     if (empty($_POST["email"])) {
-    $emailLoginErr = "Email is required";
+    $emailLoginErr = "Email is niet ingevuld";
   } else {
      $user_email = $_User->filter_email($_POST["email"]);
   }
 
     if (empty($_POST["password"])) {
-    $passwordLoginErr = "Password is required";
+    $passwordLoginErr = "Wachtwoord is niet ingevuld";
   } else {
     $user_password =  $_User->filter_text($_POST["password"]);
   }
@@ -73,8 +72,13 @@ if($_User->register($user_email,$user_password,$role_id,$user_nickname)) {
 
 
 
-$_User->login($user_email,$user_password) ? "OK" : $_User->error;
+$result1 = $_User->login($user_email,$user_password);
 
+if ($result1 == "Ongeldige inloggegevens") {
+    $loginMessage = "Ongeldige inloggegevens";
+} else {
+    $loginMessage = "Login  gelukt";
+}
 }
 
 
@@ -83,7 +87,7 @@ $_User->login($user_email,$user_password) ? "OK" : $_User->error;
 
 <html>
     <head>
-        <link rel="stylesheet" href="styles/form.css">
+        <link rel="stylesheet" href="styles/form1.css">
     </head>
 
 
@@ -126,6 +130,8 @@ $_User->login($user_email,$user_password) ? "OK" : $_User->error;
 
  <input placeholder="password"  class="input" type="password" name="password"><br>
  <span class="error"> <?php echo $passwordLoginErr;?></span>
+  <span class="error"> <?php echo $loginMessage;?></span>
+
 <input type="submit" name="login" value="login" >
 </form>
 

@@ -34,9 +34,9 @@ include('header.php');
 foreach($data1 as $row){?>
 
 <table class="overzicht">
-<td><h3> <?php echo $row['titel'];  ?> </h3> </td>
-<td> <button><a href="update.php?id=<? echo $row['id']; ?>">Update</a></button></td>
-<td><button> <a href="delete.php?id=<? echo $row['id']; ?>">Verwijderen</a></button></td>
+<td><h3> <?php echo htmlspecialchars($row['titel']);  ?> </h3> </td>
+<td> <button><a href="update.php?id=<? echo htmlspecialchars($row['id']); ?>">Update</a></button></td>
+<td><button> <a href="delete.php?id=<? echo htmlspecialchars($row['id']); ?>">Verwijderen</a></button></td>
 </table>
 
 

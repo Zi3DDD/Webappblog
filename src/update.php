@@ -26,22 +26,7 @@ if (isset($_GET['id'])) {
 
 $_Blog->updateBlog($id,$title,$text,$filename,$file_path,$category) ? "OK" : $_Blog->error;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
  $data1 = $_Blog->readUpdate($id);
- var_dump($data1);
 foreach($data1 as $row){
 
 
@@ -64,12 +49,12 @@ foreach($data1 as $row){
 
  <form  enctype="multipart/form-data" method="post">
      <br>
-     <input class="input" type="text" name="title" value="<?php echo $row['titel']; ?>">
+     <input class="input" type="text" name="title" value="<?php echo htmlspecialchars($row['titel']); ?>">
       <br>
      <input type="file"  name="foto" />
      <br>
-     
-        <select id="categorie" name="categorie" value="<?php echo $row['categorie']; ?>">
+
+        <select id="categorie" name="categorie" value="<?php echo htmlspecialchars($row['categorie']); ?>">
         <option value="Bergen">Bergen</option>
         <option value="Zee">Zee</option>
         <option value="Stad">Stad</option>
@@ -77,7 +62,7 @@ foreach($data1 as $row){
         </select>
         <label for="categorie">Kies een caterogie</label>
     <br>
-     <textarea  name="text" rows="10" cols="50"><?php echo $row['text']; ?></textarea>
+     <textarea  name="text" rows="10" cols="50"><?php echo htmlspecialchars($row['text']); ?></textarea>
     <br>
      <button type="submit" name="safe">Blog aanmaken</button>
 </form>
